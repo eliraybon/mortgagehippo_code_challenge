@@ -1,4 +1,5 @@
 class Api::TransactionsController < ApplicationController
+  before_action :authenticate
 
   def index
     @transactions = Transaction.all

@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::API
-  before_action :authenticate
 
   def authenticate
     token = request.headers['token'] || request.headers['key']

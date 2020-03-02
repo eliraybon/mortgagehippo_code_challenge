@@ -1,4 +1,5 @@
 class Api::CoinsController < ApplicationController
+  before_action :authenticate
   
   def index 
     @coins = Coin.all
