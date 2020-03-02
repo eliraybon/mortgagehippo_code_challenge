@@ -6,6 +6,13 @@ Rails.application.routes.draw do
         get :total 
       end
     end
-    
+
+    resources :transactions, only: [:index] do 
+      collection do 
+        post :deposit
+        post :withdrawal
+      end
+    end
+
   end
 end

@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   after_initialize :ensure_api_key
 
-  # has_many :transactions 
+  has_many :transactions 
 
   def self.generate_api_key
     api_key = SecureRandom.base64.tr('+/=', 'Qrt')
