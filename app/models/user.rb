@@ -7,17 +7,17 @@ class User < ApplicationRecord
   # has_many :transactions 
 
   def self.generate_api_key
-    SecureRandom.base64.tr('+/=', 'Qrt')
+    api_key = SecureRandom.base64.tr('+/=', 'Qrt')
+
+    while User.exists?(api_key: api_key)
+      api_key = SecureRandom.base64.tr('+/=', 'Qrt')
+    end
+
+    api_key
   end
 
   def ensure_api_key
-    self.api_key = User.generate_api_key
-
-    while (User.exists?(api_key: self.api_key))
-      self.api_key = User.generate_api_key
-    end
-
-    self.api_key
+    self.api_key ||= User.generate_api_key
   end
 
 end
