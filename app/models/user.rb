@@ -1,5 +1,10 @@
 class User < ApplicationRecord
+  validates :email, :api_key, presence: true, uniqueness: true 
+  validates :type, presence: true 
+
   after_initialize :ensure_api_key
+
+  # has_many :transactions 
 
   def self.generate_api_key
     SecureRandom.base64.tr('+/=', 'Qrt')
