@@ -14,5 +14,11 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :users, only: [:create] do
+      member do 
+        get :transactions
+      end
+    end
+
   end
 end
