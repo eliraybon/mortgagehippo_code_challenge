@@ -10,6 +10,15 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def admin
+    @admin = Admin.new(user_params)
+    if @admin.save
+      render json: @admin
+    else
+      render json: @admin.errors.full_messages
+    end
+  end
+
   def transactions
     user = User.find_by(id: params[:id])
     if user.nil?

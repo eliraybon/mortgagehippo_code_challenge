@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     end
 
     resources :users, only: [:create] do
+      collection do 
+        post :admin
+      end
       member do 
         get :transactions
       end
