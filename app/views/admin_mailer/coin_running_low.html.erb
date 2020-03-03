@@ -1,0 +1,15 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @coin.name.capitalize.pluralize %> are running low!</h1>
+    <p>
+      There are only <%= @coin.quantity %> left, so we should 
+      probably fill them up soon! <br>
+    </p>
+    <p>Current value of all coins in the machine: <%= Coin.total %></p>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+
+<%= @coin.name.capitalize.pluralize %> are running low!
+===============================================
+ 
+There are only <%= @coin.quantity %> left, 
+so we should probably fill them up soon!
+ 
+Current value of all coins in the machine: <%= Coin.total %>
