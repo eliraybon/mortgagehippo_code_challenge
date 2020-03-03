@@ -54,7 +54,7 @@ class Api::CoinsController < ApplicationController
 
   private
   def coin_params
-    params.require(:coins).permit(:name, :value, :quantity)
+    params.require(:coin).permit(:name, :value, :quantity)
   end
 
 end
