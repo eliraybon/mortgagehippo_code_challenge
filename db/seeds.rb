@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+coin = Coin.create(name: 'quarter', value: 25)
+admin = Admin.create(email: 'elr0615@gmail.com')
+
