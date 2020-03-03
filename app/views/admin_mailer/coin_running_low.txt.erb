@@ -1,8 +1,17 @@
 
+<% if @coin.quantity > 0 %>
 <%= @coin.name.capitalize.pluralize %> are running low!
 ===============================================
- 
+
 There are only <%= @coin.quantity %> left, 
 so we should probably fill them up soon!
- 
+
 Current value of all coins in the machine: <%= Coin.total %>
+<% else %>
+We're all out of <%= @coin.name.capitalize.pluralize %>!
+===============================================
+
+We should fill them back up as soon as possible!
+
+Current value of all coins in the machine: <%= Coin.total %>
+<% end %>

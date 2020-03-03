@@ -5,11 +5,19 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1><%= @coin.name.capitalize.pluralize %> are running low!</h1>
-    <p>
-      There are only <%= @coin.quantity %> left, so we should 
-      probably fill them up soon! <br>
-    </p>
-    <p>Current value of all coins in the machine: <%= Coin.total %></p>
+    <% if @coin.quantity > 0 %>
+      <h1><%= @coin.name.capitalize.pluralize %> are running low!</h1>
+      <p>
+        There are only <%= @coin.quantity %> left, so we should 
+        probably fill them up soon! <br>
+      </p>
+      <p>Current value of all coins in the machine: <%= Coin.total %></p>
+    <% else %>
+      <h1>We're all out of <%= @coin.name.capitalize.pluralize %>!</h1>
+      <p>
+        We should fill them back up as soon as possible! <br>
+      </p>
+      <p>Current value of all coins in the machine: <%= Coin.total %></p>
+    <% end  %>
   </body>
 </html>
