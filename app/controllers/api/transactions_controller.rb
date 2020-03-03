@@ -36,7 +36,7 @@ class Api::TransactionsController < ApplicationController
       coin.save
 
       if coin.quantity <= 3
-        AdminMailer.with(coin: coin).coin_running_low.deliver!
+        AdminMailer.with(coin: coin).coin_running_low.deliver_later
       end
 
       render json: @withdrawal
