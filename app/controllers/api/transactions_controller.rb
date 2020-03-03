@@ -8,6 +8,11 @@ class Api::TransactionsController < ApplicationController
 
   def deposit
     coin = Coin.find_by(id: params[:transaction][:coin_id])
+    if coin.nil? 
+      render json: ["No coin found"]
+      return
+    end
+
     @deposit = Deposit.new(transaction_params)
     @deposit.user = @current_user
 
@@ -22,6 +27,10 @@ class Api::TransactionsController < ApplicationController
 
   def withdrawal
     coin = Coin.find_by(id: params[:transaction][:coin_id])
+    if coin.nil? 
+      render json: ["No coin found"]
+      return
+    end
 
     if coin.quantity.zero?
       render json: ["No more of this coin left"]
@@ -36,7 +45,7 @@ class Api::TransactionsController < ApplicationController
       coin.save
 
       if coin.quantity <= 3
-        AdminMailer.with(coin: coin).coin_running_low.deliver_later
+        AdminMailer.with(coin: coin).coin_running_low.deliver_now
       end
 
       render json: @withdrawal
