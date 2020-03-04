@@ -11,8 +11,6 @@ class Api::TransactionsController < ApplicationController
       Coin.find_by(id: params[:transaction][:coin_id]) :
       nil
 
-    coin = Coin.where(name: params[:name]) if params[:name]
-
     if coin.nil? 
       render json: ["No coin found"]
       return
@@ -34,8 +32,6 @@ class Api::TransactionsController < ApplicationController
     coin = params[:transaction] ? 
       Coin.find_by(id: params[:transaction][:coin_id]) :
       nil
-
-    coin = Coin.where(name: params[:name]) if params[:name]
     
     if coin.nil? 
       render json: ["No coin found"]
