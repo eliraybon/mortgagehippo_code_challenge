@@ -67,7 +67,7 @@ Below is an example request using Postman:
 ### ```transactions``` 
 - ```GET /api/transactions``` returns all transactions 
 - ```POST /api/transactions/deposit``` deposit a coin
-- ```POST /api/transactions/withdrawal``` withdrawal a coin
+- ```POST /api/transactions/withdrawal``` withdraw a coin
 
 ### ```users```
 - ```GET /api/users/:id/transactions``` returns all transactions scoped to a specific user 
