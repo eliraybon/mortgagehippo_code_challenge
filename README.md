@@ -6,7 +6,7 @@
 
 # <h1 align="center">Coin Machine API</h1>
 
-[Live Link](http://coin-machine-api.herokuapp.com/)
+API URL: https://coin-machine-api.herokuapp.com/
 
 
 ## Authentication 
@@ -51,6 +51,8 @@ Below is an example request using Postman:
 | ```api_key```         | string    | not null, unique                               |
 | ```type```            | string    | not null, used for single table inheritance    |
 
+* All tables also include timestamps
+
 
 ## API Endpoints
 
@@ -83,5 +85,6 @@ When making POST requests to create new ```coins```, ```transactions```, or ```u
 
 This works the same way for ```transactions``` and ```users``` even though you're only sending up one param - transactions[coin_id] or user[email]. 
 
+One thing worth noting is that I'm using single-table inheritance for transactions, deposits, and withdrawals. Deposit and Withrawal are both subclasses of Transaction, but all the data is being kept in the transactions table. This felt like a perfect use case. I'm using a similar pattern for users and admins. 
 
 The admin emails are currently being sent synchronously, but there seems to be a great async solution using ```Redis``` + ```sidekiq``` that I'm going to implement if I have more time. 
