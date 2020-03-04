@@ -7,7 +7,12 @@ class Api::TransactionsController < ApplicationController
   end
 
   def deposit
-    coin = Coin.find_by(id: params[:transaction][:coin_id])
+    coin = params[:transaction] ? 
+      Coin.find_by(id: params[:transaction][:coin_id]) :
+      nil
+
+    coin = Coin.where(name: params[:name]) if params[:name]
+
     if coin.nil? 
       render json: ["No coin found"]
       return
@@ -26,7 +31,12 @@ class Api::TransactionsController < ApplicationController
   end
 
   def withdrawal
-    coin = Coin.find_by(id: params[:transaction][:coin_id])
+    coin = params[:transaction] ? 
+      Coin.find_by(id: params[:transaction][:coin_id]) :
+      nil
+
+    coin = Coin.where(name: params[:name]) if params[:name]
+    
     if coin.nil? 
       render json: ["No coin found"]
       return
